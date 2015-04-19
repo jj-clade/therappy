@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Therappy</string>
+	<string name="app_name">Therappy</string>
+	<string name="therappy_help">Help using Therappy</string>
+	<string name="therappy_preferences">Preferences</string>
 </resources>
