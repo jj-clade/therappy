@@ -8,6 +8,10 @@ buildscript {
 }
 apply plugin: 'android'
 
+dependencies {
+	compile 'com.android.support:support-v4:21.0.0'
+}
+
 android {
     compileSdkVersion 'android-19'
     buildToolsVersion '22.0.1'
