@@ -49,16 +49,16 @@ public class MainUI extends Activity
 		Fragment fragment;
 		
 		switch (position) {
-			case 0:
+			case 1;
 				fragment=mainMenu;
 				break;
-			case 1:
-				return;
 			case 2:
 				return;
 			case 3:
 				return;
 			case 4:
+				return;
+			case 5:
 				return;
 			default:
 				return;
@@ -67,7 +67,7 @@ public class MainUI extends Activity
 		switchContent(fragment, true);
 
 		drawerList.setItemChecked(position, true);
-		if (position > 0) {
+		if (position > 1) {
 			getActionBar().setTitle(drawerMenuItems[position]);
 		}
 		drawerLayout.closeDrawer(drawerList);
