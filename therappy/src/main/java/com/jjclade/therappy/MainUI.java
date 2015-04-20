@@ -1,7 +1,11 @@
 package com.jjclade.therappy;
 
 import android.app.Activity;
+import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.widget.ListView;
+import android.support.v4.widget.DrawerLayout;
 
 public class MainUI extends Activity
 {
@@ -15,7 +19,7 @@ public class MainUI extends Activity
 		tx.replace(R.id.content_frame, fragment);
 
 		if (enableBack) {
-			tx.addToBackStack(null);4
+			tx.addToBackStack(null);
 		}
 
 		tx.commit();
