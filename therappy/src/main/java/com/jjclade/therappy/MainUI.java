@@ -4,8 +4,11 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
-import android.widget.ListView;
 import android.support.v4.widget.DrawerLayout;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 public class MainUI extends Activity
 {
@@ -14,7 +17,7 @@ public class MainUI extends Activity
 	 *  @param enableBack whether to push the previous frame onto the back stack
 	 */
 	public static void switchContent(Fragment fragment, boolean enableBack) {
-		FragmentTransaction tx=getFragmentManager().beginTransaction();
+		FragmentTransaction tx=mainUI.getFragmentManager().beginTransaction();
 
 		tx.replace(R.id.content_frame, fragment);
 
@@ -32,18 +35,22 @@ public class MainUI extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-		drawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
+		if (mainUI != this) {
+			mainUI=this;
+		}
+
+//		drawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
 
 		drawerMenuItems=getResources().getStringArray(R.array.menu_array);
 		drawerLayout=(DrawerLayout)findViewById(R.id.drawer_layout);
 		drawerList=(ListView)findViewById(R.id.left_drawer);
 
-		drawerList.setAdapter(new ArrayAdapter<String>(this, R.layout.drawer_list_item, drawerMenuItems));
-		drawerList.setOnItemClickHandler(listViewListener);
+		drawerList.setAdapter(new ArrayAdapter<String>(this, R.layout.main, drawerMenuItems));
+		drawerList.setOnItemClickListener(listViewListener);
 
 		mainMenu=new MainMenu();
 
-		switchContext(mainMenu, false);
+		switchContent(mainMenu, false);
     }
 
 	/** Swap fragments into the main content view */
@@ -80,6 +87,8 @@ public class MainUI extends Activity
 	private ListView drawerList;
 
 	private Fragment mainMenu;
+
+	private static MainUI mainUI=null;
 
 	private ListView.OnItemClickListener listViewListener=new ListView.OnItemClickListener() {
 		@Override
