@@ -28,6 +28,8 @@ public class MainUI extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
+		drawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
+
 		drawerMenuItems=getResources().getStringArray(R.array.menu_array);
 		drawerLayout=(DrawerLayout)findViewById(R.id.drawer_layout);
 		drawerList=(ListView)findViewById(R.id.left_drawer);
@@ -45,7 +47,7 @@ public class MainUI extends Activity
 		Fragment fragment;
 		
 		switch (position) {
-			case 1;
+			case 1:
 				fragment=mainMenu;
 				break;
 			case 2:
