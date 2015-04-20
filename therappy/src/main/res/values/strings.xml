@@ -3,4 +3,12 @@
 	<string name="app_name">Therappy</string>
 	<string name="therappy_help">Help using Therappy</string>
 	<string name="therappy_preferences">Preferences</string>
+
+	<string-array name="menu_array">
+		<item>Main Menu</item>
+		<item>Log Moods</item>
+		<item>Find Patterns</item>
+		<item>Get Help</item>
+		<item>Edit Moods</item>
+	</string-array>
 </resources>

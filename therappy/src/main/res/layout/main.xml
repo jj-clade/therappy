@@ -6,6 +6,7 @@
 	android:layout_height="match_parent">
 	<!-- Main content view -->
 	<TextView
+		android:id="@+id/content_frame"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 		android:text="Hello World, Navigation Drawer!"
