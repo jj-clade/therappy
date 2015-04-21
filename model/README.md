@@ -1,1 +1,0 @@
-This is a proof of concept for the model implementation.  Tree, Leaf, and MoodLeaf are the basis of what the app uses for its internal processing.  The DB interfaces abstract over the actual relational database (thus being a crude Object-Relational Mapping): the actual SQL schema and SQLite calls would combine to implement those interfaces.
