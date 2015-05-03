@@ -17,7 +17,9 @@ import android.widget.ListView;
 
 public class Main extends Activity {
 	public Main() {
-		mainScreenFragment=new Fragment() {
+		fragments=new Fragment[5];
+
+		fragments[0]=new Fragment() {
 			@Override public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 				View rootView=inflater.inflate(R.layout.main_screen, container, false);
 
@@ -96,12 +98,14 @@ public class Main extends Activity {
 	}
 
 	private void selectItem(int what) {
-		Fragment newFragment=mainScreenFragment;
+		Fragment fragment=fragments[what];
 
-		getFragmentManager().beginTransaction().replace(R.id.content_frame, newFragment).commit();
+		if (fragment != null) {
+			getFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
+			setTitle(drawerItems[what]);
+		}
 
 		drawerList.setItemChecked(what, true);
-		setTitle(drawerItems[what]);
 		drawerLayout.closeDrawer(drawerList);
 	}
 
@@ -131,8 +135,5 @@ public class Main extends Activity {
 	private CharSequence title;
 	private String[] drawerItems;
 
-	private Fragment mainScreenFragment;
-	private Fragment logMoodsFragment;
-	private Fragment findPatternsFragment;
-	private Fragment editMoodsFragment;
+	private Fragment[] fragments;
 }
