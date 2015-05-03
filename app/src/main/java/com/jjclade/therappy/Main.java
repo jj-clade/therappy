@@ -101,8 +101,10 @@ public class Main extends Activity {
 
 		switch(item.getItemId()) {
 			case R.id.action_therappy_help:
+				selectItem(5);
 				break;
 			case R.id.action_settings:
+				selectItem(6);
 				break;
 			default:
 				return super.onOptionsItemSelected(item);
@@ -152,11 +154,11 @@ public class Main extends Activity {
 				switch (what) {
 					case 5:
 						// Help
-						setTitle(getResources().getString(R.id.action_therappy_help));
+						setTitle(getResources().getString(R.string.action_therappy_help));
 						break;
 					case 6:
 						// Settings
-						setTitle(getResources().getString(R.id.action_settings));
+						setTitle(getResources().getString(R.string.action_settings));
 						break;
 				}
 			}
