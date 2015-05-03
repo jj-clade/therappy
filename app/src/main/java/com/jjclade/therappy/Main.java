@@ -17,7 +17,7 @@ import android.widget.ListView;
 
 public class Main extends Activity {
 	public Main() {
-		fragments=new Fragment[5];
+		fragments=new Fragment[7];
 
 		fragments[0]=new Fragment() {
 			@Override public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -26,6 +26,18 @@ public class Main extends Activity {
 				return rootView;
 			}
 		};
+	}
+
+	public static Main getInstance() {
+		return theMain;
+	}
+
+	/** to be called by child fragments if they've done their thing
+	 *	
+	 *	@param index the index in the side menu list, or 5 for help and 6 for settings
+	 */
+	public void invalidateFragment(int index) {
+		fragments[index]=null;
 	}
 
 	@Override
@@ -66,6 +78,8 @@ public class Main extends Activity {
 		if (savedInstanceState == null) {
 			selectItem(0);
 		}
+
+		theMain=this;
 	}
 
 	@Override
@@ -100,9 +114,52 @@ public class Main extends Activity {
 	private void selectItem(int what) {
 		Fragment fragment=fragments[what];
 
+		if (fragment == null) {
+			switch (what) {
+				case 0:
+					// already exists, do nothing
+					break;
+				case 1:
+					// Log Moods
+					fragment=new LogMoods();
+					break;
+				case 2:
+					// Find Patterns
+					fragment=new FindPatterns();
+					break;
+				case 3:
+					// Get Help
+					fragment=new GetHelp();
+					break;
+				case 4:
+					fragment=new EditMoods();
+					break;
+				case 5:
+					fragment=new TherappyHelp();
+					break;
+				case 6:
+					fragment=new TherappyPreferences();
+					break;
+			}
+			fragments[what]=fragment;
+		}
+
 		if (fragment != null) {
 			getFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
-			setTitle(drawerItems[what]);
+			if (what<5) {
+				setTitle(drawerItems[what]);
+			} else {
+				switch (what) {
+					case 5:
+						// Help
+						setTitle(getResources().getString(R.id.action_therappy_help));
+						break;
+					case 6:
+						// Settings
+						setTitle(getResources().getString(R.id.action_settings));
+						break;
+				}
+			}
 		}
 
 		drawerList.setItemChecked(what, true);
@@ -136,4 +193,6 @@ public class Main extends Activity {
 	private String[] drawerItems;
 
 	private Fragment[] fragments;
+
+	private static Main theMain;	// Not Spanish, but...
 }
