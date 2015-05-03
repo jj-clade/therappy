@@ -1,8 +1,10 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools" tools:context=".Main">
-    <item android:id="@+id/action_example" android:title="@string/action_example"
-        app:showAsAction="withText|ifRoom" />
-    <item android:id="@+id/action_settings" android:title="@string/action_settings"
-        android:orderInCategory="100" app:showAsAction="never" />
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+	<item android:id="@+id/action_therappy_help"
+	      android:icon="@drawable/action_help"
+		  android:title="@string/action_therappy_help"
+		  android:showAsAction="ifRoom"/>
+	<item android:id="@+id/action_settings"
+	      android:icon="@drawable/action_settings"
+		  android:title="@string/action_settings"
+		  android:showAsAction="ifRoom"/>
 </menu>
