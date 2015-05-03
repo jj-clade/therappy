@@ -16,5 +16,10 @@
 	</string-array>
 
 <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="get_help_title">Get Help</string>
+	<string name="edit_moods_title">Edit Moods</string>
+	<string name="find_patterns_title">Find Patterns</string>
+	<string name="log_moods_title">Log Moods</string>
+	<string name="therappy_help_title">Therappy Help</string>
+	<string name="therappy_preferences_title">Therappy Preferences</string>
 </resources>
