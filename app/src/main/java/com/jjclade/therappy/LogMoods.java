@@ -109,6 +109,7 @@ public class LogMoods extends Fragment {
     }
 
     public void nextButtonOnClick(View v){
+        //TODO:  some means of showing the next screen with triggers
         System.out.println("Next Button Clicked");
     }
 
