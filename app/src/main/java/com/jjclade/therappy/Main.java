@@ -113,11 +113,11 @@ public class Main extends Activity {
 		return true;
 	}
 
-	private void selectItem(int what) {
-		Fragment fragment=fragments[what];
+	private void selectItem(int itemSelected) {
+		Fragment fragment=fragments[itemSelected];
 
 		if (fragment == null) {
-			switch (what) {
+			switch (itemSelected) {
 				case 0:
 					// already exists, do nothing
 					break;
@@ -143,15 +143,15 @@ public class Main extends Activity {
 					fragment=new TherappyPreferences();
 					break;
 			}
-			fragments[what]=fragment;
+			fragments[itemSelected]=fragment;
 		}
 
 		if (fragment != null) {
 			getFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
-			if (what<5) {
-				setTitle(drawerItems[what]);
+			if (itemSelected<5) {
+				setTitle(drawerItems[itemSelected]);
 			} else {
-				switch (what) {
+				switch (itemSelected) {
 					case 5:
 						// Help
 						setTitle(getResources().getString(R.string.action_therappy_help));
@@ -164,7 +164,7 @@ public class Main extends Activity {
 			}
 		}
 
-		drawerList.setItemChecked(what, true);
+		drawerList.setItemChecked(itemSelected, true);
 		drawerLayout.closeDrawer(drawerList);
 	}
 
