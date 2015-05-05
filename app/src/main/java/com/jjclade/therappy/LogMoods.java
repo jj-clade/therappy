@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 
 /**
@@ -59,8 +58,6 @@ public class LogMoods extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
-       // Button nextButton = (Button) findViewById(R.id.next_button);
     }
 
     @Override
@@ -109,9 +106,5 @@ public class LogMoods extends Fragment {
         public void onFragmentInteraction(Uri uri);
     }
 
-    public void nextButtonOnClick(View v){
-        //TODO:  some means of showing the next screen with triggers
-        System.out.println("Next Button Clicked");
-    }
 
 }

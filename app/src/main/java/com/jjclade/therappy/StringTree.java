@@ -7,11 +7,11 @@ import java.util.ArrayList;
  */
 public class StringTree {
     public String name;
-    public ArrayList<String> kids;
+    public ArrayList<StringTree> kids;
 
     public StringTree(String name) {
         this.name = name;
-        kids = new ArrayList<String>();
+        kids = new ArrayList<StringTree>();
     }
 
     public void add(String s){

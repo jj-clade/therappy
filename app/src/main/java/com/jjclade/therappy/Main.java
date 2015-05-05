@@ -197,4 +197,8 @@ public class Main extends Activity {
 	private Fragment[] fragments;
 
 	private static Main theMain;	// Not Spanish, but...
+
+	public void nextButtonOnClickLogMoods(View view) {
+		System.out.println("Next Button Clicked");
+	}
 }
