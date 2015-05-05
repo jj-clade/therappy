@@ -8,18 +8,10 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="20dp"
+        android:layout_height="93dp"
         android:gravity="center"
         android:text="@string/log_moods_title"
-        android:textSize="25dp"/>
-
-    <ImageView
-        android:layout_width="302dp"
-        android:layout_height="170dp"
-        android:id="@+id/imageView"
-        android:src="@drawable/mood_diagram"
-        android:paddingTop="30dp"
-        android:layout_gravity="center_horizontal" />
+        android:textSize="30dp"/>
 
     <Button
         android:layout_width="wrap_content"
@@ -49,5 +41,13 @@
         android:layout_gravity="center"
         android:paddingBottom="100dp"
         android:textSize="25dp"/>
+
+    <ImageView
+        android:layout_width="304dp"
+        android:layout_height="171dp"
+        android:id="@+id/imageView"
+        android:src="@drawable/mood_diagram"
+        android:paddingTop="50dp"
+        android:layout_gravity="center_horizontal|top" />
 
 </FrameLayout>
