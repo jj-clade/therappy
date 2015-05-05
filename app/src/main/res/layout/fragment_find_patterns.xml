@@ -6,4 +6,45 @@
     <TextView android:layout_width="match_parent" android:layout_height="match_parent"
         android:text="@string/find_patterns_title" />
 
+    <ImageView
+
+        android:layout_width="302dp"
+        android:layout_height="170dp"
+        android:id="@+id/imageView"
+        android:src="@drawable/mood_diagram"
+
+        android:background="@drawable/background"
+        android:paddingTop="30dp"
+        android:layout_gravity="center_horizontal" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/next_button_text"
+        android:id="@+id/next_button"
+        android:layout_gravity="end|bottom"
+        android:onClick="nextButtonOnClick"/>
+
+    <SeekBar
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/seekBar"
+        android:layout_gravity="left|bottom" />
+
+    <ExpandableListView
+        android:layout_width="280dp"
+        android:layout_height="316dp"
+        android:id="@+id/expandableListViewMoods"
+        android:layout_gravity="left|bottom" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/moods_title"
+        android:id="@+id/textView2"
+        android:layout_gravity="center"
+        android:paddingBottom="100dp"
+        android:textSize="25dp"/>
+
+
 </FrameLayout>
