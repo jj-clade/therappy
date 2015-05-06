@@ -2,6 +2,7 @@ package com.jjclade.therappy;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
@@ -16,28 +17,12 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 public class Main extends Activity {
-	public Main() {
-		fragments=new Fragment[7];
-
-		fragments[0]=new Fragment() {
-			@Override public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-				View rootView=inflater.inflate(R.layout.main_screen, container, false);
-
-				return rootView;
-			}
-		};
-	}
-
-	public static Main getInstance() {
-		return theMain;
-	}
-
-	/** to be called by child fragments if they've done their thing
-	 *	
-	 *	@param index the index in the side menu list, or 5 for help and 6 for settings
+	/** *** UGLY HACK ALERT!!! ***
+	 *
+	 *  Are we in a derived class of Main?
 	 */
-	public void invalidateFragment(int index) {
-		fragments[index]=null;
+	protected boolean isInDerivedClass() {
+		return (getClass() != Main.class);
 	}
 
 	@Override
@@ -75,11 +60,12 @@ public class Main extends Activity {
 		};
 		drawerLayout.setDrawerListener(drawerToggle);
 
-		if (savedInstanceState == null) {
-			selectItem(0);
+		if ((savedInstanceState != null) &&
+		    (!isInDerivedClass())) {
+			// Add the fragment
+			getFragmentManager().beginTransaction().
+			                     replace(R.id.content_frame, muf);
 		}
-
-		theMain=this;
 	}
 
 	@Override
@@ -114,58 +100,54 @@ public class Main extends Activity {
 	}
 
 	private void selectItem(int itemSelected) {
-		Fragment fragment=fragments[itemSelected];
+		Intent intent=null;
 
-		if (fragment == null) {
-			switch (itemSelected) {
-				case 0:
-					// already exists, do nothing
-					break;
-				case 1:
-					// Log Moods
-					fragment=new LogMoods();
-					break;
-				case 2:
-					// Find Patterns
-					fragment=new FindPatterns();
-					break;
-				case 3:
-					// Get Help
-					fragment=new GetHelp();
-					break;
-				case 4:
-					fragment=new EditMoods();
-					break;
-				case 5:
-					fragment=new TherappyHelp();
-					break;
-				case 6:
-					fragment=new TherappyPreferences();
-					break;
-			}
-			fragments[itemSelected]=fragment;
+		switch (itemSelected) {
+			case 0:
+				if (isInDerivedClass()) {
+					intent=new Intent(this, Main.class);
+				}
+				break;
+			case 1:
+				// Log Moods
+				intent=new Intent(this, LogMoods.class);
+				break;
+			case 2:
+				// Find Patterns
+				intent=new Intent(this, FindPatterns.class);
+				break;
+			case 3:
+				// Get Help
+				intent=new Intent(this, GetHelp.class);
+				break;
+			case 4:
+				intent=new Intent(this, EditMoods.class);
+				break;
+			case 5:
+				intent=new Intent(this, TherappyHelp.class);
+				break;
+			case 6:
+				intent=new Intent(this, TherappyPreferences.class);
+				break;
 		}
 
-		if (fragment != null) {
-			getFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
-			if (itemSelected<5) {
-				setTitle(drawerItems[itemSelected]);
-			} else {
-				switch (itemSelected) {
-					case 5:
-						// Help
-						setTitle(getResources().getString(R.string.action_therappy_help));
-						break;
-					case 6:
-						// Settings
-						setTitle(getResources().getString(R.string.action_settings));
-						break;
-				}
-			}
+		switch (itemSelected) {
+			case 5:
+				// Help
+				setTitle(getResources().getString(R.string.action_therappy_help));
+				break;
+			case 6:
+				// Settings
+				setTitle(getResources().getString(R.string.action_settings));
+				break;
 		}
 
 		drawerList.setItemChecked(itemSelected, true);
 		drawerLayout.closeDrawer(drawerList);
+
+		if (intent != null) {
+			startActivity(intent);
+		}
 	}
 
 	@Override
@@ -194,11 +176,31 @@ public class Main extends Activity {
 	private CharSequence title;
 	private String[] drawerItems;
 
-	private Fragment[] fragments;
+	/** Holds data etc. which persists across Activity changes */
+	static class TherappyContext {
+	}
 
-	private static Main theMain;	// Not Spanish, but...
+	protected static TherappyContext context;
 
 	public void nextButtonOnClickLogMoods(View view) {
 		System.out.println("Next Button Clicked");
+	}
+
+	private static class MainUIFragment extends Fragment {
+		public MainUIFragment() {
+			// empty as required for Fragment subclasses
+		}
+
+		@Override
+		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+			View rootView=inflater.inflate(R.layout.main_screen, container, false);
+			return rootView;
+		}
+	}
+
+	private static MainUIFragment muf;
+
+	static {
+		muf=new MainUIFragment();
 	}
 }
