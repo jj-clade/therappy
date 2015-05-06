@@ -14,7 +14,12 @@ public class StringTree {
         kids = new ArrayList<StringTree>();
     }
 
-    public void add(String s){
+    public void add(StringTree s){
         kids.add(s);
     }
 }
+
+
+
+
+
