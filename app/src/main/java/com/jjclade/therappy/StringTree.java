@@ -15,6 +15,11 @@ public class StringTree {
     }
 
     public void add(StringTree s){
-        kids.push(s);
+        kids.add(s);
     }
 }
+
+
+
+
+
