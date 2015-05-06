@@ -1,7 +1,7 @@
 package com.jjclade.therappy;
 
 /**
- * Created by jacob on 5/5/15.
+ * Created by Jacob Throckmorton on 5/6/2015.
  */
 public class MoodLeaf extends StringLeaf {
     public double intensity;
@@ -9,6 +9,4 @@ public class MoodLeaf extends StringLeaf {
         super(s);
         intensity = 0;
     }
-
-
 }
