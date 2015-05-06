@@ -30,5 +30,5 @@
 	<string name="triggers_title">Select Trigger Category</string>
 	<string name="beliefs_title">Select Belief Category</string>
 	<string name="behaviors_title">Select Behavior Category</string>
-    <color name="white">#FFFFFF</color>
+
 </resources>
