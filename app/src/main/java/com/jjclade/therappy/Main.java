@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class Main extends Activity {
 	/** *** UGLY HACK ALERT!!! ***
@@ -60,11 +61,13 @@ public class Main extends Activity {
 		};
 		drawerLayout.setDrawerListener(drawerToggle);
 
-		if ((savedInstanceState != null) &&
+		if ((savedInstanceState == null) &&
 		    (!isInDerivedClass())) {
-			// Add the fragment
+			// Add the fragment, but only if this is actually the Main activity...
+			Toast.makeText(getApplicationContext(), "Fooey!", Toast.LENGTH_SHORT).show();
 			getFragmentManager().beginTransaction().
-			                     replace(R.id.content_frame, muf);
+			                     replace(R.id.content_frame, muf).
+								 commit();
 		}
 	}
 
