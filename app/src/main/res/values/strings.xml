@@ -166,6 +166,9 @@
 	</string-array>
 
 	<string-array name="triggers_socialInteraction_workRelated">
+
+		<item>Positive</item>
+		<item>Negative</item>
 		<item>link:triggers_socialInteraction_workRelated_positive</item>
 		<item>link:triggers_socialInteraction_workRelated_negative</item>
 	</string-array>
