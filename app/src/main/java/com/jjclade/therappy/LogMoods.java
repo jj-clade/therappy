@@ -30,6 +30,11 @@ public class LogMoods extends Main {
 		}
 	}
 
+	private void finishUp() {
+		// TODO: Save the log entry...
+		// Move to the main activity
+	}
+
 	private void switchFragmentTo(int pageNumber) {
 		FragmentTransaction tx=getFragmentManager().beginTransaction();
 
@@ -67,6 +72,12 @@ public class LogMoods extends Main {
 				break;
 			case 2:
 				tx.replace(R.id.content_frame, new Page2());
+				break;
+			case 3:
+				tx.replace(R.id.content_frame, new Page3());
+				break;
+			case 4:
+				tx.replace(R.id.content_frame, new Page4());
 				break;
 			default:
 				// Can't happen...
@@ -183,6 +194,80 @@ public class LogMoods extends Main {
 
 					selectTrigger(selected);
 					switchFragmentTo(3);
+				}
+			});
+
+			return rootView;
+		}
+
+		private int selected=-1;
+
+		private class ListItemClickListener implements ListView.OnItemClickListener {
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				selected=position;
+			}
+		}
+	}
+
+	/** Belief logger */
+	private class Page3 extends Fragment {
+		public Page3() {
+			// empty as required for Fragment subclasses
+		}
+
+		@Override
+		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+			View rootView=inflater.inflate(R.layout.fragment_log_moods_2, container, false);
+
+			fillListView((ListView)(rootView.findViewById(R.id.listViewTriggers)), currentBelief, new ListItemClickListener());
+
+			Button button=(Button)(rootView.findViewById(R.id.next_button));
+			button.setOnClickListener(new View.OnClickListener() {
+				public void onClick(View v) {
+					if (selected < 0) {
+						return;
+					}
+
+					selectBelief(selected);
+					switchFragmentTo(4);
+				}
+			});
+
+			return rootView;
+		}
+
+		private int selected=-1;
+
+		private class ListItemClickListener implements ListView.OnItemClickListener {
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				selected=position;
+			}
+		}
+	}
+
+	/** Behavior logger */
+	private class Page4 extends Fragment {
+		public Page4() {
+			// empty as required for Fragment subclasses
+		}
+
+		@Override
+		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+			View rootView=inflater.inflate(R.layout.fragment_log_moods_2, container, false);
+
+			fillListView((ListView)(rootView.findViewById(R.id.listViewTriggers)), currentBehavior, new ListItemClickListener());
+
+			Button button=(Button)(rootView.findViewById(R.id.next_button));
+			button.setOnClickListener(new View.OnClickListener() {
+				public void onClick(View v) {
+					if (selected < 0) {
+						return;
+					}
+
+					selectBehavior(selected);
+					finishUp();
 				}
 			});
 
