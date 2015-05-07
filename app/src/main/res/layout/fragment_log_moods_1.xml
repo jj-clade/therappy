@@ -26,10 +26,10 @@
 		android:scaleType="fitXY"
         android:layout_centerHorizontal="true" />
 
-    <ExpandableListView
+    <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/expandableListViewMoods"
+        android:id="@+id/listViewMoods"
         android:layout_below="@+id/textView2"
         android:layout_alignLeft="@+id/imageView"
         android:layout_alignStart="@+id/imageView"

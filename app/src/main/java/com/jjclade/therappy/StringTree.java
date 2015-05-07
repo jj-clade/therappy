@@ -43,4 +43,18 @@ public class StringTree {
 
 		return true;
 	}
+
+	public String[] toArray() {
+		if (kids.size() == 0) {
+			String[] ret=new String[1];
+			ret[0]=name;
+		}
+
+		String[] ret=new String[kids.size()];
+		for (int i=0; i<kids.size(); i++) {
+			ret[i]=kids.get(i).name;
+		}
+
+		return ret;
+	}
 }
