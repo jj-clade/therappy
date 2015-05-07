@@ -12,6 +12,10 @@ public class LogEntry {
     MoodLeaf mood;
     Time time;
     long timestamp;
+    String moodComment;
+    String triggerComment;
+    String beliefComment;
+    String behaviorComment;
 
 
     public LogEntry(){
