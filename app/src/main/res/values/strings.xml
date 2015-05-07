@@ -27,10 +27,10 @@
 	<string name="finish_button_text">Finish</string>
 	<string name="next_button_text">Next</string>
 
-	<string name="moods_title">Select Mood Category</string>
-	<string name="triggers_title">Select Trigger Category</string>
-	<string name="beliefs_title">Select Belief Category</string>
-	<string name="behaviors_title">Select Behavior Category</string>
+	<string name="moods_title">Select Mood</string>
+	<string name="triggers_title">Select Trigger</string>
+	<string name="beliefs_title">Select Belief</string>
+	<string name="behaviors_title">Select Behavior</string>
 
 	<!-- The behavior tree -->
 	<string-array name="behaviors">
@@ -200,11 +200,13 @@
 	</string-array>
 
 	<string-array name="triggers_workSchoolEvents">
+		<item>Work-School Events</item>
 		<item>Positive</item>
 		<item>Negative</item>
 	</string-array>
 
 	<string-array name="triggers_lossRelated">
+		<item>Loss-related</item>
 		<item>Positive</item>
 		<item>Negative</item>
 	</string-array>
