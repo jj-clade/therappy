@@ -107,6 +107,8 @@ public class LogMoods extends Main {
 			return;
 		}
 
+		child=(child>currentTrigger.kids.size()) ? currentTrigger.kids.size()-1 : child;
+
 		currentTrigger=currentTrigger.kids.get(child);
 	}
 
@@ -115,6 +117,8 @@ public class LogMoods extends Main {
 			return;
 		}
 
+		child=(child>currentBelief.kids.size()) ? currentBelief.kids.size()-1 : child;
+
 		currentBelief=currentBelief.kids.get(child);
 	}
 
@@ -122,6 +126,8 @@ public class LogMoods extends Main {
 		if (currentBehavior.kids.size() < 1) {
 			return;
 		}
+
+		child=(child>currentBehavior.kids.size()) ? currentBehavior.kids.size()-1 : child;
 
 		currentBehavior=currentBehavior.kids.get(child);
 	}
