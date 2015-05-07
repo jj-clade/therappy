@@ -12,9 +12,11 @@ public class LogMoods extends Main {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
+		setTitle("Log Moods");
+
 		if (savedInstanceState == null) {
 			getFragmentManager().beginTransaction().
-			                     replace(R.id.content_frame, new Page1()).
+			                     add(R.id.content_frame, new Page1()).
 								 commit();
 		}
 	}

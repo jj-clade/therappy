@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class Main extends Activity {
 	/** *** UGLY HACK ALERT!!! ***
@@ -60,13 +61,15 @@ public class Main extends Activity {
 		};
 		drawerLayout.setDrawerListener(drawerToggle);
 
-		if ((savedInstanceState == null) &&
-		    (!isInDerivedClass())) {
+		if (!isInDerivedClass()) {
 			// Add the fragment, but only if this is actually the Main activity...
 			getFragmentManager().beginTransaction().
-			                     replace(R.id.content_frame, muf).
+			                     add(R.id.content_frame, new MainUIFragment()).
 								 commit();
 		}
+	}
+
+	protected void swapOutFragment(Fragment fragment) {
 	}
 
 	@Override
@@ -130,6 +133,9 @@ public class Main extends Activity {
 			case 6:
 				intent=new Intent(this, TherappyPreferences.class);
 				break;
+			default:
+				// Unknown
+				return;
 		}
 
 		switch (itemSelected) {
@@ -141,6 +147,7 @@ public class Main extends Activity {
 				// Settings
 				setTitle(getResources().getString(R.string.action_settings));
 				break;
+			default:
 		}
 
 		drawerList.setItemChecked(itemSelected, true);
@@ -197,11 +204,5 @@ public class Main extends Activity {
 			View rootView=inflater.inflate(R.layout.main_screen, container, false);
 			return rootView;
 		}
-	}
-
-	private static MainUIFragment muf;
-
-	static {
-		muf=new MainUIFragment();
 	}
 }
