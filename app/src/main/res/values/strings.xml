@@ -23,8 +23,9 @@
 	<string name="therappy_help_title">Therappy Help</string>
 	<string name="therappy_preferences_title">Therappy Preferences</string>
 
-	<string name="next_button_text">Next</string>
 	<string name="back_button_text">Back</string>
+	<string name="finish_button_text">Finish</string>
+	<string name="next_button_text">Next</string>
 
 	<string name="moods_title">Select Mood Category</string>
 	<string name="triggers_title">Select Trigger Category</string>
