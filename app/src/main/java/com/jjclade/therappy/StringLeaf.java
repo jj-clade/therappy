@@ -8,4 +8,8 @@ public class StringLeaf extends StringTree {
         super(s);
         kids = null;
     }
+
+	public void add(StringTree s) {
+		return;
+	}
 }

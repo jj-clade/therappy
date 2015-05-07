@@ -5,6 +5,7 @@ package com.jjclade.therappy;
  */
 public class MoodLeaf extends StringLeaf {
     public double intensity;
+
     public MoodLeaf(String s){
         super(s);
         intensity = 0;

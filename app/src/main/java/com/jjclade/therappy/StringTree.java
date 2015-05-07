@@ -17,4 +17,30 @@ public class StringTree {
     public void add(StringTree s){
         kids.add(s);
     }
+
+	public int hashCode() { return name.hashCode(); }
+
+	public boolean equals(Object o) {
+		if (getClass() != o.getClass()) {
+			return false;
+		}
+
+		if (o == this) {
+			return true;
+		}
+
+		StringTree rhs=(StringTree)o;
+
+		if (!(name.equals(rhs.name))) {
+			return false;
+		}
+
+		for (StringTree kid : kids) {
+			if (!(rhs.kids.contains(kid))) {
+				return false;
+			}
+		}
+
+		return true;
+	}
 }
