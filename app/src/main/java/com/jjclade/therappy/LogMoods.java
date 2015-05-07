@@ -22,6 +22,10 @@ public class LogMoods extends Main {
 
 		if (savedInstanceState == null) {
 			currentMood=getTherappy().getModel().moods;
+			currentTrigger=getTherappy().getModel().triggers;
+			currentBelief=getTherappy().getModel().beliefs;
+			currentBehavior=getTherappy().getModel().behaviors;
+
 			switchFragmentTo(1);
 		}
 	}
@@ -31,26 +35,85 @@ public class LogMoods extends Main {
 
 		switch (pageNumber) {
 			case 1:
-				tx.replace(R.id.content_frame, new Page1());
+				// do nothing
 				break;
 			case 2:
-				tx.replace(R.id.content_frame, new Page2());
+				// trying to move on to trigger
+				if (!(currentMood instanceof MoodLeaf)) {
+					// Not yet there...
+					pageNumber=1;
+				}
+				break;
+			case 3:
+				// trying to move on to belief
+				if (!(currentTrigger instanceof StringLeaf)) {
+					pageNumber=2;
+				}
+				break;
+			case 4:
+				// trying to move on to behavior
+				if (!(currentTrigger instanceof StringLeaf)) {
+					pageNumber=3;
+				}
 				break;
 			default:
 				Toast.makeText(getApplicationContext(), "There's no page for that", Toast.LENGTH_SHORT);
 				return;
 		}
 
+		switch (pageNumber) {
+			case 1:
+				tx.replace(R.id.content_frame, new Page1());
+				break;
+			case 2:
+				tx.replace(R.id.content_frame, new Page2());
+				break;
+			default:
+				// Can't happen...
+				assert(false);
+		}
+
 		tx.commit();
+		
+		getFragmentManager().executePendingTransactions();
 	}
 
 	private void selectMood(int child) {
-		if (currentMood.kids.size() == 0) {
+		if (currentMood.kids.size() < 1) {
 			return;
 		}
+
+		currentMood=currentMood.kids.get(child);
+	}
+
+	private void selectTrigger(int child) {
+		if (currentTrigger.kids.size() < 1) {
+			return;
+		}
+
+		currentTrigger=currentTrigger.kids.get(child);
+	}
+
+	private void selectBelief(int child) {
+		if (currentBelief.kids.size() < 1) {
+			return;
+		}
+
+		currentBelief=currentBelief.kids.get(child);
+	}
+
+	private void selectBehavior(int child) {
+		if (currentBehavior.kids.size() < 1) {
+			return;
+		}
+
+		currentBehavior=currentBehavior.kids.get(child);
 	}
 
 	private StringTree currentMood=null;
+	private StringTree currentTrigger=null;
+	private StringTree currentBelief=null;
+	private StringTree currentBehavior=null;
 
 	private void fillListView(ListView lv, StringTree st, ListView.OnItemClickListener oicl) {
 		String[] names=st.toArray();
@@ -58,6 +121,7 @@ public class LogMoods extends Main {
 		lv.setOnItemClickListener(oicl);
 	}
 
+	/** Mood logger */
 	private class Page1 extends Fragment {
 		public Page1() {
 			// empty as required for Fragment subclasses
@@ -80,6 +144,7 @@ public class LogMoods extends Main {
 					}
 
 					selectMood(selected);
+					// Try to move on to trigger
 					switchFragmentTo(2);
 				}
 			});
@@ -97,6 +162,7 @@ public class LogMoods extends Main {
 		}
 	}
 
+	/** Trigger logger */
 	private class Page2 extends Fragment {
 		public Page2() {
 			// empty as required for Fragment subclasses
@@ -106,16 +172,30 @@ public class LogMoods extends Main {
 		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 			View rootView=inflater.inflate(R.layout.fragment_log_moods_2, container, false);
 
-			Toast.makeText(getApplicationContext(), "Page 2", Toast.LENGTH_SHORT);
+			fillListView((ListView)(rootView.findViewById(R.id.listViewTriggers)), currentTrigger, new ListItemClickListener());
+
 			Button button=(Button)(rootView.findViewById(R.id.next_button));
 			button.setOnClickListener(new View.OnClickListener() {
 				public void onClick(View v) {
-					// TODO: check that a mood is entered
+					if (selected < 0) {
+						return;
+					}
+
+					selectTrigger(selected);
 					switchFragmentTo(3);
 				}
 			});
 
 			return rootView;
+		}
+
+		private int selected=-1;
+
+		private class ListItemClickListener implements ListView.OnItemClickListener {
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				selected=position;
+			}
 		}
 	}
 }

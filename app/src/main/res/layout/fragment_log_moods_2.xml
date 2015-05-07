@@ -26,14 +26,13 @@
         android:scaleType="fitXY"
         android:layout_centerHorizontal="true" />
 
-    <ListView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/listViewMoods"
-        android:layout_below="@+id/textView2"
-        android:layout_alignLeft="@+id/imageView"
-        android:layout_alignStart="@+id/imageView"
-        tools:listitem="@android:layout/simple_list_item_2" />
+	<ListView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:id="@+id/listViewTriggers"
+		android:layout_below="@+id/textView2"
+		android:layout_alignLeft="@+id/imageView"
+		android:layout_alignStart="@+id/imageView" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -42,7 +41,7 @@
         android:id="@+id/textView2"
         android:textSize="25dp"
         android:layout_below="@+id/imageView"
-        android:layout_centerHorizontal="true" />
+		android:layout_centerHorizontal="true" />
 
     <LinearLayout android:layout_width="fill_parent"
         android:layout_height="wrap_content"
