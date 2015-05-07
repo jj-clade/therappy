@@ -6,6 +6,17 @@
     tools:context="com.jjclade.therappy.LogMoods"
     android:id="@+id/log_moods_layout">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/log_moods_title"
+        android:textSize="25dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/textView3" />
+
     <ImageView
         android:layout_width="302dp"
         android:layout_height="170dp"
@@ -15,14 +26,23 @@
         android:scaleType="fitXY"
         android:layout_centerHorizontal="true" />
 
-    <ExpandableListView
+    <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/expandableListViewMoods"
+        android:id="@+id/listViewMoods"
         android:layout_below="@+id/textView2"
         android:layout_alignLeft="@+id/imageView"
         android:layout_alignStart="@+id/imageView"
         tools:listitem="@android:layout/simple_list_item_2" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/beliefs_title"
+        android:id="@+id/textView2"
+        android:textSize="25dp"
+        android:layout_below="@+id/imageView"
+        android:layout_centerHorizontal="true" />
 
     <LinearLayout android:layout_width="fill_parent"
         android:layout_height="wrap_content"
