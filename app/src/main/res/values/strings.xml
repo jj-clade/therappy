@@ -159,46 +159,55 @@
 
 	<string-array name="triggers_socialInteraction">
 		<item>Social interaction</item>
-		<item>link:triggers_workRelated</item>
-		<item>link:triggers_friendRelated</item>
-		<item>link:triggers_familyRelated</item>
-		<item>link:triggers_partnerRelated</item>
+		<item>link:triggers_socialInteraction_workRelated</item>
+		<item>link:triggers_socialInteraction_friendRelated</item>
+		<item>link:triggers_socialInteraction_familyRelated</item>
+		<item>link:triggers_socialInteraction_partnerRelated</item>
 	</string-array>
 
-	<string-array name="triggers_workRelated">
+	<string-array name="triggers_socialInteraction_workRelated">
 		<item>link:triggers_workRelated_positive</item>
 		<item>link:triggers_workRelated_negative</item>
 	</string-array>
 
-	<string-array name="triggers_workRelated_positive">
+	<string-array name="triggers_socialInteraction_workRelated_positive">
 		<item>Positive</item>
 		<item>Interaction with Boss</item>
 		<item>Interaction with Peer</item>
 		<item>Interaction with Subordinate</item>
 	</string-array>
 
-	<string-array name="triggers_workRelated_negative">
+	<string-array name="triggers_socialInteraction_workRelated_negative">
 		<item>Negative</item>
 		<item>Interaction with Boss</item>
 		<item>Interaction with Peer</item>
 		<item>Interaction with Subordinate</item>
 	</string-array>
 
-	<string-array name="triggers_friendRelated">
+	<string-array name="triggers_socialInteraction_friendRelated">
 		<item>Positive</item>
 		<item>Negative</item>
 	</string-array>
 
-	<string-array name="triggers_familyRelated">
+	<string-array name="triggers_socialInteraction_familyRelated">
 		<item>Positive</item>
 		<item>Negative</item>
 	</string-array>
 
-	<string-array name="triggers_partnerRelated">
+	<string-array name="triggers_socialInteraction_partnerRelated">
 		<item>Positive</item>
 		<item>Negative</item>
 	</string-array>
 
+	<string-array name="triggers_workSchoolEvents">
+		<item>Positive</item>
+		<item>Negative</item>
+	</string-array>
+
+	<string-array name="triggers_lossRelated">
+		<item>Positive</item>
+		<item>Negative</item>
+	</string-array>
 
 	<!-- findpatterns strings -->
     <string name="find_patterns_1">Select Data Format to Explore</string>

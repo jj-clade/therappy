@@ -83,9 +83,9 @@ public class Main extends Activity {
 		if (model.moods == null) {
 			model.moods=getTree(R.array.moods, true);
 		}
-		/*if (model.triggers == null) {
+		if (model.triggers == null) {
 			model.triggers=getTree(R.array.triggers, false);
-		}*/
+		}
 	}
 
 	private StringTree getTree(int rootId, boolean isMood) {
