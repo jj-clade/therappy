@@ -1,12 +1,18 @@
 package com.jjclade.therappy;
 
 import android.app.Activity;
+import android.app.FragmentTransaction;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ListView;
+import android.widget.Toast;
 
 
 /**
@@ -17,93 +23,105 @@ import android.view.ViewGroup;
  * Use the {@link EditMoods#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class EditMoods extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    private OnFragmentInteractionListener mListener;
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment EditMoods.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static EditMoods newInstance(String param1, String param2) {
-        EditMoods fragment = new EditMoods();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    public EditMoods() {
-        // Required empty public constructor
-    }
-
+public class EditMoods extends Main {
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+
+        setTitle("Edit Moods");
+
+        if (savedInstanceState == null) {
+            currentMood=getTherappy().getModel().moods;
+            switchFragmentTo(1);
+        }
+}
+
+    private void switchFragmentTo(int pageNumber) {
+        FragmentTransaction tx=getFragmentManager().beginTransaction();
+
+        switch (pageNumber) {
+            case 1:
+                tx.replace(R.id.content_frame, new Page1());
+                break;
+            case 2:
+                tx.replace(R.id.content_frame, new Page2());
+                break;
+            default:
+                Toast.makeText(getApplicationContext(), "There's no page for that", Toast.LENGTH_SHORT);
+                return;
+        }
+
+        tx.commit();
+    }
+
+    private void selectMood(int child) {
+        if (currentMood.kids.size() == 0) {
+            return;
         }
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_edit_moods, container, false);
-    }
+    private StringTree currentMood=null;
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
+    private class Page1 extends Fragment {
+        public Page1() {
+            // empty as required for Fragment subclasses
+        }
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+            View rootView=inflater.inflate(R.layout.fragment_edit_moods_1, container, false);
+
+            // Load items from the tree into the ListView
+            ListView moodlist=(ListView)(rootView.findViewById(R.id.listViewMoods));
+            String[] names=currentMood.toArray();
+            moodlist.setAdapter(new ArrayAdapter<String>(rootView.getContext(), R.layout.list_item, names));
+            moodlist.setOnItemClickListener(new ListItemClickListener());
+
+            Button button=(Button)(rootView.findViewById(R.id.next_button));
+            button.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    if (selected < 0) {
+                        // Nothing selected yet, do nothing
+                        return;
+                    }
+
+                    selectMood(selected);
+                    switchFragmentTo(2);
+                }
+            });
+
+            return rootView;
+        }
+
+        private int selected=-1;
+
+        private class ListItemClickListener implements ListView.OnItemClickListener {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                selected=position;
+            }
         }
     }
 
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        /*try {
-            mListener = (OnFragmentInteractionListener) activity;
-        } catch (ClassCastException e) {
-            throw new ClassCastException(activity.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }*/
-    }
+    private class Page2 extends Fragment {
+        public Page2() {
+            // empty as required for Fragment subclasses
+        }
 
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
-    }
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+            View rootView=inflater.inflate(R.layout.fragment_edit_moods_2, container, false);
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p/>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        public void onFragmentInteraction(Uri uri);
-    }
+            Toast.makeText(getApplicationContext(), "Page 2", Toast.LENGTH_SHORT);
+            Button button=(Button)(rootView.findViewById(R.id.next_button));
+            button.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    // TODO: check that a mood is entered
+                    switchFragmentTo(3);
+                }
+            });
 
+            return rootView;
+        }
+    }
 }
