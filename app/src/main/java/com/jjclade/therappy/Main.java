@@ -69,7 +69,77 @@ public class Main extends Activity {
 		}
 	}
 
-	protected void swapOutFragment(Fragment fragment) {
+	protected TherappyApplication getTherappy() { return (TherappyApplication)getApplication(); }
+
+	private void initializeData() {
+		TherappyApplication.DataModel model=getTherappy().getModel();
+
+		if (model.behaviors == null) {
+			model.behaviors=getTree(R.array.behaviors, false);
+		}
+		if (model.beliefs == null) {
+			model.beliefs=getTree(R.array.beliefs, false);
+		}
+		if (model.moods == null) {
+			model.moods=getTree(R.array.moods, true);
+		}
+		/*if (model.triggers == null) {
+			model.triggers=getTree(R.array.triggers, false);
+		}*/
+	}
+
+	private StringTree getTree(int rootId, boolean isMood) {
+		String[] strings=getResources().getStringArray(rootId);
+
+		if ((strings == null) ||
+		    (strings.length == 0)) {
+			return null;
+		}
+
+		if (strings.length == 1) {
+			return (isMood) ? (new MoodLeaf(strings[0])) :
+			                  (new StringLeaf(strings[0]));
+		}
+		// length at least 2
+		
+		StringTree ret=new StringTree(strings[0]);
+
+		for (int i=1; i<strings.length; i++) {
+			if ((strings[i].length() > 5) &&
+				(strings[i].substring(0, 5).equals("link:"))) {
+				// refers to a child array
+				int id=getResources().getIdentifier(strings[i].substring(5, strings[i].length()), "array", "com.jjclade.therappy");
+
+				assert(id != 0);
+
+				ret.add(getTree(id, isMood));
+			} else {
+				// refers to a leaf
+				StringLeaf leaf;
+
+				if (isMood) {
+					leaf=new MoodLeaf(strings[i]);
+					((MoodLeaf)leaf).intensity=1.0*(strings.length-1)/i;
+				} else {
+					leaf=new StringLeaf(strings[i]);
+				}
+
+				ret.add(leaf);
+			}
+		}
+
+		return ret;
+	}
+
+	private int failure=0;
+
+	@Override
+	public void onResume() {
+		super.onResume();
+
+		if (!isInDerivedClass()) {
+			initializeData();
+		}
 	}
 
 	@Override
@@ -183,12 +253,6 @@ public class Main extends Activity {
 	private CharSequence drawerTitle;
 	private CharSequence title;
 	private String[] drawerItems;
-
-	/** Holds data etc. which persists across Activity changes */
-	static class TherappyContext {
-	}
-
-	protected static TherappyContext context;
 
 	public void nextButtonOnClickLogMoods(View view) {
 		System.out.println("Next Button Clicked");

@@ -3,7 +3,8 @@
     package="com.jjclade.therappy" >
 
     <application
-        android:allowBackup="true"
+		android:allowBackup="true"
+		android:name="com.jjclade.therappy.TherappyApplication"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
