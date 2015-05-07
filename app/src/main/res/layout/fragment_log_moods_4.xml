@@ -28,7 +28,7 @@
 
     <ListView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="160dp"
         android:id="@+id/listViewMoods"
         android:layout_below="@+id/textView2"
         android:layout_alignLeft="@+id/imageView"
@@ -46,7 +46,8 @@
 
     <LinearLayout android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true">
+        android:layout_alignParentBottom="true"
+        android:id="@+id/linearLayout3">
 
         <Button	android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -63,5 +64,17 @@
             android:layout_alignParentRight="true"
             android:layout_weight=".5" />
     </LinearLayout>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText8"
+        android:layout_below="@+id/listViewMoods"
+        android:layout_alignLeft="@+id/listViewMoods"
+        android:layout_alignStart="@+id/listViewMoods"
+        android:layout_above="@+id/linearLayout3"
+        android:layout_alignRight="@+id/imageView"
+        android:layout_alignEnd="@+id/imageView"
+        android:hint="Comment on your Behavior."/>
 
 </RelativeLayout>

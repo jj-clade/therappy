@@ -28,7 +28,7 @@
 
 	<ListView
 		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
+		android:layout_height="160dp"
 		android:id="@+id/listViewTriggers"
 		android:layout_below="@+id/textView2"
 		android:layout_alignLeft="@+id/imageView"
@@ -62,5 +62,16 @@
             android:layout_alignParentRight="true"
             android:layout_weight=".5" />
     </LinearLayout>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText6"
+        android:layout_below="@+id/listViewTriggers"
+        android:layout_alignLeft="@+id/listViewTriggers"
+        android:layout_alignStart="@+id/listViewTriggers"
+        android:layout_alignRight="@+id/imageView"
+        android:layout_alignEnd="@+id/imageView"
+        android:hint="Comment on your Trigger."/>
 
 </RelativeLayout>
