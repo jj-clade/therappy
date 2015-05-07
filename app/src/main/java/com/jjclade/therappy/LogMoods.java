@@ -52,6 +52,12 @@ public class LogMoods extends Main {
 
 	private StringTree currentMood=null;
 
+	private void fillListView(ListView lv, StringTree st, ListView.OnItemClickListener oicl) {
+		String[] names=st.toArray();
+		lv.setAdapter(new ArrayAdapter<String>(lv.getContext(), R.layout.list_item, names));
+		lv.setOnItemClickListener(oicl);
+	}
+
 	private class Page1 extends Fragment {
 		public Page1() {
 			// empty as required for Fragment subclasses
@@ -63,9 +69,7 @@ public class LogMoods extends Main {
 
 			// Load items from the tree into the ListView
 			ListView moodlist=(ListView)(rootView.findViewById(R.id.listViewMoods));
-			String[] names=currentMood.toArray();
-			moodlist.setAdapter(new ArrayAdapter<String>(rootView.getContext(), R.layout.list_item, names));
-			moodlist.setOnItemClickListener(new ListItemClickListener());
+			fillListView(moodlist, currentMood, new ListItemClickListener());
 
 			Button button=(Button)(rootView.findViewById(R.id.next_button));
 			button.setOnClickListener(new View.OnClickListener() {
