@@ -48,7 +48,6 @@
             android:layout_below="@+id/textView2"
             android:text="@string/find_patterns_data1"
             android:id="@+id/data1_button"
-            android:clickable="false"
             android:layout_weight=".5"
             android:layout_alignParentLeft="true" />
 
