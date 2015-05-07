@@ -166,9 +166,7 @@
 	</string-array>
 
 	<string-array name="triggers_socialInteraction_workRelated">
-
-		<item>Positive</item>
-		<item>Negative</item>
+		<item>Work-related</item>
 		<item>link:triggers_socialInteraction_workRelated_positive</item>
 		<item>link:triggers_socialInteraction_workRelated_negative</item>
 	</string-array>
@@ -188,16 +186,19 @@
 	</string-array>
 
 	<string-array name="triggers_socialInteraction_friendRelated">
+		<item>Friend-related</item>
 		<item>Positive</item>
 		<item>Negative</item>
 	</string-array>
 
 	<string-array name="triggers_socialInteraction_familyRelated">
+		<item>Family-related</item>
 		<item>Positive</item>
 		<item>Negative</item>
 	</string-array>
 
 	<string-array name="triggers_socialInteraction_partnerRelated">
+		<item>Partner-related</item>
 		<item>Positive</item>
 		<item>Negative</item>
 	</string-array>

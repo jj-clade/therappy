@@ -3,6 +3,7 @@ package com.jjclade.therappy;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,6 +34,10 @@ public class LogMoods extends Main {
 	private void finishUp() {
 		// TODO: Save the log entry...
 		// Move to the main activity
+		Intent intent=new Intent(this, Main.class);
+		// Clear the back stack
+		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+		startActivity(intent);
 	}
 
 	private void switchFragmentTo(int pageNumber) {
@@ -57,7 +62,7 @@ public class LogMoods extends Main {
 				break;
 			case 4:
 				// trying to move on to behavior
-				if (!(currentTrigger instanceof StringLeaf)) {
+				if (!(currentBelief instanceof StringLeaf)) {
 					pageNumber=3;
 				}
 				break;
@@ -128,6 +133,7 @@ public class LogMoods extends Main {
 
 	private void fillListView(ListView lv, StringTree st, ListView.OnItemClickListener oicl) {
 		String[] names=st.toArray();
+		lv.setAdapter(null);
 		lv.setAdapter(new ArrayAdapter<String>(lv.getContext(), R.layout.list_item, names));
 		lv.setOnItemClickListener(oicl);
 	}
@@ -218,7 +224,7 @@ public class LogMoods extends Main {
 
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-			View rootView=inflater.inflate(R.layout.fragment_log_moods_2, container, false);
+			View rootView=inflater.inflate(R.layout.fragment_log_moods_3, container, false);
 
 			fillListView((ListView)(rootView.findViewById(R.id.listViewTriggers)), currentBelief, new ListItemClickListener());
 
@@ -255,7 +261,7 @@ public class LogMoods extends Main {
 
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-			View rootView=inflater.inflate(R.layout.fragment_log_moods_2, container, false);
+			View rootView=inflater.inflate(R.layout.fragment_log_moods_4, container, false);
 
 			fillListView((ListView)(rootView.findViewById(R.id.listViewTriggers)), currentBehavior, new ListItemClickListener());
 
