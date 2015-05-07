@@ -44,7 +44,7 @@
 		<item>To a bar</item>
 		<item>To a park</item>
 		<item>To a restaurant</item>
-		<item>To a friend's house</item>
+		<item>To a friend\'s house</item>
 		<item>For a run</item>
 	</string-array>
 
@@ -148,6 +148,18 @@
 		<item>Proud</item>
 		<item>Embarrassed</item>
 		<item>Ashamed</item>
+	</string-array>
+
+	<string-array name="triggers">
+		<item>Triggers</item>
+		<item>link:triggers_socialInteraction</item>
+		<item>link:triggers_workSchoolEvents</item>
+		<item>link:triggers_lossRelated</item>
+	</string-array>
+
+	<string-array name="triggers_socialInteraction">
+		<item>Social interaction</item>
+		<item>link:triggers_workRelated</item>
 	</string-array>
 	
 	<!-- findpatterns strings -->
