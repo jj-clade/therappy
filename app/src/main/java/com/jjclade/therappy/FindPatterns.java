@@ -53,7 +53,7 @@ public class FindPatterns extends Main {
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             View rootView=inflater.inflate(R.layout.fragment_find_patterns, container, false);
 
-            Button button=(Button)(rootView.findViewById(R.id.next_button));
+            Button button=(Button)(rootView.findViewById(R.id.data1_button));
             button.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
 
@@ -64,7 +64,7 @@ public class FindPatterns extends Main {
             return rootView;
         }
 
-        private LogMoods activity;
+        private FindPatterns activity;
     }
     // TODO: create find_patterns page2 and have it to switch to it
     private class Page2 extends Fragment {
@@ -74,9 +74,9 @@ public class FindPatterns extends Main {
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-            View rootView=inflater.inflate(R.layout.fragment_log_moods_2, container, false);
+            View rootView=inflater.inflate(R.layout.fragment_find_patterns_2, container, false);
 
-            Button button=(Button)(rootView.findViewById(R.id.next_button));
+            Button button=(Button)(rootView.findViewById(R.id.data1_button));
             button.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
 
