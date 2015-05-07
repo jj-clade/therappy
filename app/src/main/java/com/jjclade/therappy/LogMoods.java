@@ -33,7 +33,7 @@ public class LogMoods extends Main {
 				tx.add(R.id.content_frame, new Page2());
 				break;
 			default:
-				Toast.makeToast(getApplicationContext(), "There's no page for that", Toast.LENGTH_SHORT);
+				Toast.makeText(getApplicationContext(), "There's no page for that", Toast.LENGTH_SHORT);
 				return;
 		}
 
@@ -43,11 +43,6 @@ public class LogMoods extends Main {
 	private class Page1 extends Fragment {
 		public Page1() {
 			// empty as required for Fragment subclasses
-		}
-
-		@Override
-		public void onCreate(Bundle savedInstanceState) {
-			super.onCreate(savedInstanceState);
 		}
 
 		@Override
