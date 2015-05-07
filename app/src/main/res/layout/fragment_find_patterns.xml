@@ -55,9 +55,34 @@
         <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/data2_button"
             android:layout_below="@+id/data1_button"
             android:text="@string/find_patterns_data2"
-            android:id="@+id/next_button"
+            android:layout_alignParentLeft="true"
+            android:layout_weight=".5" />
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/data2_button"
+            android:text="@string/find_patterns_data3"
+            android:id="@+id/data3_button"
+            android:layout_alignParentLeft="true"
+            android:layout_weight=".5" />
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/data3_button"
+            android:text="@string/find_patterns_data4"
+            android:id="@+id/data4_button"
+            android:layout_alignParentLeft="true"
+            android:layout_weight=".5" />
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/data4_button"
+            android:text="@string/find_patterns_data5"
+            android:id="@+id/data5_button"
             android:layout_alignParentLeft="true"
             android:layout_weight=".5" />
     </RelativeLayout>
