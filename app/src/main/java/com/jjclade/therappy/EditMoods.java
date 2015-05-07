@@ -15,14 +15,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link EditMoods.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link EditMoods#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class EditMoods extends Main {
     @Override
     protected void onCreate(Bundle savedInstanceState) {

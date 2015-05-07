@@ -41,6 +41,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.jjclade.therappy.Main" />
         </activity>
+        <activity
+            android:name=".GetHelp"
+            android:parentActivityName=".Main" >
+            <!-- for the support library -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.jjclade.therappy.Main" />
+        </activity>
     </application>
 
 </manifest>
