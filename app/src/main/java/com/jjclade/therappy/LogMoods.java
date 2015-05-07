@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class LogMoods extends Main {
 	@Override
@@ -32,13 +33,14 @@ public class LogMoods extends Main {
 				tx.add(R.id.content_frame, new Page2());
 				break;
 			default:
+				Toast.makeToast(getApplicationContext(), "There's no page for that", Toast.LENGTH_SHORT);
 				return;
 		}
 
 		tx.commit();
 	}
 
-	private static class Page1 extends Fragment {
+	private class Page1 extends Fragment {
 		public Page1() {
 			// empty as required for Fragment subclasses
 		}
@@ -46,20 +48,19 @@ public class LogMoods extends Main {
 		@Override
 		public void onCreate(Bundle savedInstanceState) {
 			super.onCreate(savedInstanceState);
-
-			activity=(LogMoods)getActivity();
-
-			Button button=(Button)(activity.findViewById(R.id.next_button));
-			button.setOnClickListener(new View.OnClickListener() {
-				public void onClick(View v) {
-					activity.switchFragmentTo(2);
-				}
-			});
 		}
 
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 			View rootView=inflater.inflate(R.layout.fragment_log_moods_1, container, false);
+
+			Button button=(Button)(rootView.findViewById(R.id.next_button));
+			button.setOnClickListener(new View.OnClickListener() {
+				public void onClick(View v) {
+					// TODO: check that a mood is entered
+					switchFragmentTo(2);
+				}
+			});
 
 			return rootView;
 		}
@@ -67,14 +68,24 @@ public class LogMoods extends Main {
 		private LogMoods activity;
 	}
 
-	private static class Page2 extends Fragment {
+	private class Page2 extends Fragment {
 		public Page2() {
 			// empty as required for Fragment subclasses
 		}
 
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-			return null;
+			View rootView=inflater.inflate(R.layout.fragment_log_moods_2, container, false);
+
+			Button button=(Button)(rootView.findViewById(R.id.next_button));
+			button.setOnClickListener(new View.OnClickListener() {
+				public void onClick(View v) {
+					// TODO: check that a mood is entered
+					switchFragmentTo(3);
+				}
+			});
+
+			return rootView;
 		}
 	}
 }
