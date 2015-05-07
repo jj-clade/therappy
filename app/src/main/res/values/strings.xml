@@ -32,4 +32,121 @@
 	<string name="beliefs_title">Select Belief Category</string>
 	<string name="behaviors_title">Select Behavior Category</string>
 
+	<!-- The behavior tree -->
+	<string-array name="behaviors">
+		<item>behaviors</item>
+		<item>link:behaviors_goingOut</item>
+		<item>link:behaviors_stayingIn</item>
+	</string-array>
+
+	<string-array name="behaviors_goingOut">
+		<item>Going out</item>
+		<item>To a bar</item>
+		<item>To a park</item>
+		<item>To a restaurant</item>
+		<item>To a friend's house</item>
+		<item>For a run</item>
+	</string-array>
+
+	<string-array name="behaviors_stayingIn">
+		<item>Staying in</item>
+		<item>Watching TV</item>
+		<item>Eating</item>
+		<item>Playing Video Games</item>
+		<item>Reading a Book</item>
+		<item>Taking a Shower</item>
+	</string-array>
+
+	<!-- The belief tree -->
+	<string-array name="beliefs">
+		<item>beliefs</item>
+		<item>link:beliefs_positive</item>
+		<item>link:beliefs_negative</item>
+	</string-array>
+
+	<string-array name="beliefs_positive">
+		<item>Positive</item>
+		<item>Awesome</item>
+		<item>Successful</item>
+		<item>Independent</item>
+		<item>Loved</item>
+	</string-array>
+
+	<string-array name="beliefs_negative">
+		<item>Negative</item>
+		<item>Terrible</item>
+		<item>Unsuccessful</item>
+		<item>Hopeless</item>
+		<item>Alone</item>
+	</string-array>
+
+	<string-array name="moods">
+		<item>moods</item>
+		<item>link:moods_happinessRelated</item>
+		<item>link:moods_sadnessRelated</item>
+		<item>link:moods_fearRelated</item>
+		<item>link:moods_shameRelated</item>
+	</string-array>
+
+	<string-array name="moods_happinessRelated">
+		<item>Happiness-related</item>
+		<item>Ecstatic</item>
+		<item>Excited</item>
+		<item>Giddy</item>
+		<item>Joyful</item>
+		<item>Happy</item>
+		<item>Hopeful</item>
+		<item>Optimistic</item>
+		<item>Silly</item>
+		<item>Satisfied</item>
+		<item>Pleased</item>
+		<item>Playful</item>
+		<item>Content</item>
+		<item>Calm</item>
+		<item>Peaceful</item>
+		<item>Relaxed</item>
+	</string-array>
+
+	<string-array name="moods_sadnessRelated">
+		<item>Sadness-related</item>
+		<item>Despondent</item>
+		<item>Hopeless</item>
+		<item>Depressed</item>
+		<item>Crushed</item>
+		<item>Sad</item>
+		<item>Regretful</item>
+		<item>Brooding</item>
+		<item>Apathetic</item>
+		<item>Gloomy</item>
+		<item>Pessimistic</item>
+		<item>Numb</item>
+		<item>Overwhelmed</item>
+		<item>Intimidated</item>
+		<item>Stressed</item>
+		<item>Restless</item>
+		<item>Lonely</item>
+	</string-array>
+
+	<string-array name="moods_fearRelated">
+		<item>Fear-related</item>
+		<item>Terrified</item>
+		<item>Panicky</item>
+		<item>Afraid</item>
+		<item>Scared</item>
+		<item>Anxious</item>
+		<item>Apprehensive</item>
+		<item>Tense</item>
+		<item>Nervous</item>
+		<item>Envious</item>
+		<item>Jealous</item>
+		<item>Confused</item>
+	</string-array>
+
+	<string-array name="moods_shameRelated">
+		<item>Shame-related</item>
+		<item>Conceited</item>
+		<item>Proud</item>
+		<item>Embarrassed</item>
+		<item>Ashamed</item>
+	</string-array>
 </resources>
