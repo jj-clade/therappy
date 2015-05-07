@@ -29,7 +29,7 @@ public class LogMoods extends Main {
 
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-			View rootView=inflater.inflate(R.layout.fragment_log_moods, container, false);
+			View rootView=inflater.inflate(R.layout.fragment_log_moods_1, container, false);
 
 			return rootView;
 		}
