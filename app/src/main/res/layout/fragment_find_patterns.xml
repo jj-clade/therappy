@@ -1,50 +1,68 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" tools:context="com.jjclade.therappy.FindPatterns">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView android:layout_width="match_parent" android:layout_height="match_parent"
-        android:text="@string/find_patterns_title" />
+
+    <!-- Title -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/find_patterns_title"
+        android:textSize="25dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/textView3" />
+
+    <!-- Mood Diagram -->
 
     <ImageView
-
         android:layout_width="302dp"
         android:layout_height="170dp"
         android:id="@+id/imageView"
         android:src="@drawable/mood_diagram"
+        android:layout_below="@+id/textView3"
+        android:scaleType="fitXY"
+        android:layout_centerHorizontal="true" />
 
-        android:background="@drawable/background"
-        android:paddingTop="30dp"
-        android:layout_gravity="center_horizontal" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/next_button_text"
-        android:id="@+id/next_button"
-        android:layout_gravity="end|bottom"
-        android:onClick="nextButtonOnClick"/>
-
-    <SeekBar
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/seekBar"
-        android:layout_gravity="left|bottom" />
-
-    <ExpandableListView
-        android:layout_width="280dp"
-        android:layout_height="316dp"
-        android:id="@+id/expandableListViewMoods"
-        android:layout_gravity="left|bottom" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/moods_title"
+        android:text="@string/find_patterns_1"
         android:id="@+id/textView2"
-        android:layout_gravity="center"
-        android:paddingBottom="100dp"
-        android:textSize="25dp"/>
+        android:textSize="25dp"
+        android:layout_below="@+id/imageView"
+        android:layout_centerHorizontal="true" />
+
+    <!-- Options for FindPatterns -->
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView2">
+
+        <Button	android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView2"
+            android:text="@string/find_patterns_data1"
+            android:id="@+id/data1_button"
+            android:clickable="false"
+            android:layout_weight=".5"
+            android:layout_alignParentLeft="true" />
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/data1_button"
+            android:text="@string/find_patterns_data2"
+            android:id="@+id/next_button"
+            android:layout_alignParentLeft="true"
+            android:layout_weight=".5" />
+    </RelativeLayout>
 
 
-</FrameLayout>
+
+
+</RelativeLayout>
