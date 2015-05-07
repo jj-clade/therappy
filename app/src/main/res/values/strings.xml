@@ -32,4 +32,10 @@
 	<string name="beliefs_title">Select Belief Category</string>
 	<string name="behaviors_title">Select Behavior Category</string>
 
+    <!-- findpatterns strings -->
+    <string name="find_patterns_1">Select Data Format to Explore</string>
+    <string name="find_patterns_data1">Intensity Of Moods</string>
+    <string name="find_patterns_data2">Frequency Of Moods</string>
+    <string name="find_patterns_data3">Beliefs by Moods</string>
+
 </resources>
