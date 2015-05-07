@@ -28,7 +28,7 @@
 
     <ListView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="190dp"
         android:id="@+id/listViewMoods"
         android:layout_below="@+id/textView2"
         android:layout_alignLeft="@+id/imageView"
