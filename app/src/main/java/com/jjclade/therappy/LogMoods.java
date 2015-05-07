@@ -232,7 +232,7 @@ public class LogMoods extends Main {
 		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 			View rootView=inflater.inflate(R.layout.fragment_log_moods_3, container, false);
 
-			fillListView((ListView)(rootView.findViewById(R.id.listViewTriggers)), currentBelief, new ListItemClickListener());
+			fillListView((ListView)(rootView.findViewById(R.id.listViewMoods)), currentBelief, new ListItemClickListener());
 
 			Button button=(Button)(rootView.findViewById(R.id.next_button));
 			button.setOnClickListener(new View.OnClickListener() {
@@ -269,7 +269,7 @@ public class LogMoods extends Main {
 		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 			View rootView=inflater.inflate(R.layout.fragment_log_moods_4, container, false);
 
-			fillListView((ListView)(rootView.findViewById(R.id.listViewTriggers)), currentBehavior, new ListItemClickListener());
+			fillListView((ListView)(rootView.findViewById(R.id.listViewMoods)), currentBehavior, new ListItemClickListener());
 
 			Button button=(Button)(rootView.findViewById(R.id.next_button));
 			button.setOnClickListener(new View.OnClickListener() {
